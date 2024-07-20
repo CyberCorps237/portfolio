@@ -3,13 +3,14 @@ let nom = document.getElementById("name");
 let email = document.getElementById("email");
 let phone = document.getElementById("phone");
 let message = document.getElementById("message");
-const erreur = document.querySelector('.erreur');
+const success_message = document.querySelector('.success');
 
 
 forms.addEventListener('submit', (e)=>{
     e.preventDefault();
    
     validateform();
+
 
     
 })
@@ -20,7 +21,7 @@ function validateEmail(email) {
 }
 // verifier le numerode telephone
 function validatePhone(phoneNumber) {
-    const regex = /^\d{10}$/;
+    const regex = /^\+\d{1,3}\s?\d{3,}\s?\d{3,}\s?\d{3,}$/;
     return regex.test(phoneNumber);
 }
 
@@ -61,19 +62,21 @@ const validateform = () =>{
         set_success(nom1,nom2);
     }
    
-    if(user_message === "" || user_message.length<4){
+    if(user_message === "" || user_message.length<10){
         set_error(message1,message2);
     }else{
         set_success(message1,message2);
+        success_message.style.display="block";
+        
     }
 
-    if(user_phone === "" || validatePhone(user_phone)){
+    if(user_phone === "" || !validatePhone(user_phone)){
         set_error(phone1,phone2);
     }else{
         set_success(phone1,phone2);
     
     }
-    if(user_email === "" || validateEmail(user_email)){
+    if(user_email === "" || !validateEmail(user_email)){
         set_error(email1,email2);
     }else{
         set_success(email1,email2);
