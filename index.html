@@ -173,7 +173,7 @@
                 </div>
                 <!-- Contact Section Form-->
                 <div class="row justify-content-center">
-                    <div class="col-lg-8 col-xl-7">
+                    <div class="col-lg-7 col-xl-6">
                         <form id="contactForm" >
                             <!-- Name input-->
                             <div class="form-floating mb-3">
@@ -192,13 +192,13 @@
                             <div class="form-floating mb-3">
                                 <input class="form-control phone" id="phone" type="tel" placeholder="(123) 456-7890"/>
                                 <label for="phone">Phone number</label>
-                                <div class="invalid-feedback phone">A phone number is required.</div>
+                                <div class="invalid-feedback phone_error">A phone number is required.</div>
                             </div>
                             <!-- Message input-->
                             <div class="form-floating mb-3">
                                 <textarea class="form-control message" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
                                 <label for="message">Message</label>
-                                <div class="invalid-feedback message" data-sb-feedback="message:required">A message is required.</div>
+                                <div class="invalid-feedback message_error" data-sb-feedback="message:required">A message is required.</div>
                             </div>
                             
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>

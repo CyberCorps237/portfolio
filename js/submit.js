@@ -13,6 +13,17 @@ forms.addEventListener('submit', (e)=>{
 
     
 })
+// verifier si l'email est valide 
+function validateEmail(email) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+}
+// verifier le numerode telephone
+function validatePhone(phoneNumber) {
+    const regex = /^\d{10}$/;
+    return regex.test(phoneNumber);
+}
+
 
 let set_error = (element1,element2)=>{
     let error = document.querySelector(`.${element1}`);
@@ -39,14 +50,30 @@ const validateform = () =>{
     let nom2 = 'nom';
     let email1 = 'email_error';
     let email2 = 'email';
+    let phone1 = 'phone_error';
+    let phone2 = 'phone';
+    let message1 = 'message_error';
+    let message2 = 'message';
 
     if(user_name === "" || user_name.length<4){
         set_error(nom1,nom2);
     }else{
         set_success(nom1,nom2);
     }
+   
+    if(user_message === "" || user_message.length<4){
+        set_error(message1,message2);
+    }else{
+        set_success(message1,message2);
+    }
 
-    if(user_email === "" || user_email.length<4){
+    if(user_phone === "" || validatePhone(user_phone)){
+        set_error(phone1,phone2);
+    }else{
+        set_success(phone1,phone2);
+    
+    }
+    if(user_email === "" || validateEmail(user_email)){
         set_error(email1,email2);
     }else{
         set_success(email1,email2);
