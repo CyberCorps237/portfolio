@@ -6,14 +6,25 @@ let message = document.getElementById("message");
 const success_message = document.querySelector('.success');
 
 
+
+// let user_name = nom.value.trim();
+let user_email = email.value.trim();
+// let user_phone =phone.value.trim();
+// let user_message =message.value.trim();
+
+
 forms.addEventListener('submit', (e)=>{
     e.preventDefault();
    
     validateform();
 
+    sendEmail();
 
-    
 })
+
+
+
+
 // verifier si l'email est valide 
 function validateEmail(email) {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -44,10 +55,12 @@ let set_success = (element1,element2)=>{
 
 // fonction de soumission des formulaires
 const validateform = () =>{
+
     let user_name = nom.value.trim();
     let user_email = email.value.trim();
     let user_phone =phone.value.trim();
     let user_message =message.value.trim();
+
 
     let success_name = true;
     let success_email = true;
@@ -104,6 +117,39 @@ const validateform = () =>{
         success_message.classList.remove('alert-danger');
         success_message.innerText = 'Message send Successfully! Thank you for your message!!!';
         success_message.style.display="block";
+        contain_mail = `${user_name} <br> ${user_email} <br> ${user_phone} <br> ${user_message}`;
     }
 
 }
+
+function sendEmail(){
+    Email.send({
+        Host : "smtp.elasticemail.com",
+        Username : "cybercorps237@gmail.com",
+        Password : "69BCDB9D996087140BEEA8394D57632D8948",
+        To : 'petitdassi7@gmail.com',
+        From : 'cybercorps237@gmail.com',
+        Subject : "Contact from Portfolio",
+        Body : contain_mail
+    }).then(
+      message => {
+        if(message =='OK'){
+            alert('message Send!')
+        }else{
+            alert("Problem Occur!!!")
+        }
+      }
+        
+      
+    
+    );
+}
+
+
+
+
+
+
+
+
+
